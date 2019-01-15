@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="网易严选,小米有品,苏宁极物,京造和淘宝心选等严选类电商一键搜索工具">
+    <title>严选类电商一键搜索工具</title>
+    <link rel="stylesheet" href="specture.css">
+</head>
+
+<body>
+
+    <div class="container col-6">
+
+        <div class="columns">
+            <form action="" class="column col-6 col-xs-12" style="margin: 50px auto 20px;">
+                <div class="input-group">
+                    <input class="form-input" id="key" type="text" placeholder="请输入关键字">
+                    <button class="btn btn-primary input-group-btn">一键搜索</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="column col-6 col-xs-12" style="margin: 0 auto;">
+            <ol id="list"></ol>
+
+            <blockquote style="display: none;" id="tip">
+                <h4>
+                    </h3>说明：</h2>
+                    <ol class="text-success">
+                        <li>如果没有自动打开搜索结果窗口，请手动点击以下链接查看搜索结果</li>
+                        <li>苏宁极物没有搜索功能，只能根据目录分类一个个查找你想要的商品</li>
+                    </ol>
+            </blockquote>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        !(function () {
+            var sites = [
+                { name: '网易严选', url: 'http://you.163.com/', search: 'search?keyword=' },
+                { name: '小米有品', url: 'https://youpin.mi.com/', search: 'search?keyword=' },
+                { name: '京造', url: 'https://mall.jd.com/index-1000096602.html', search: 'https://mall.jd.com/view_search-880693-1000096602-1000096602-0-0-0-0-1-1-60.html?keyword=' },
+                { name: '淘宝心选', url: 'https://good.tmall.com/', search: 'https://good.tmall.com/?type=p&search=y&newHeader_b=s_from&searcy_type=item&q=' },
+                { name: '苏宁极物(没有搜索功能)', url: 'https://jw.suning.com/', search: '?keyword=' }
+            ];
+
+            var search = function (key) {
+                var html = '';
+                var i;
+                var len;
+                var item;
+                var newKey;
+                var newUrl;
+
+                key = key || '';
+
+                if (key) {
+                    for (i = 0, len = sites.length; i < len; i++) {
+                        item = sites[i] || {};
+                        newKey = item.name === '京造' ? escape(encodeURIComponent(key)) : key;
+
+                        if (item.search) {
+                            newUrl = (item.search.match(/http|https/gi) ? item.search : item.url) + (item.search ? (item.search.match(/http|https/gi) ? '' : item.search) + newKey : '');
+                            window.open(newUrl);
+                            html += '<li><a target="_blank" href="' + newUrl + '">打开' + item.name + '关于[' + key + ']搜索结果</a>' + '</li>';
+                        }
+                    }
+
+                    $('#tip').show();
+                }
+
+                return html;
+            };
+
+            $('form').on('submit', function (e) {
+                var keyword = $('#key').val();
+
+                keyword = (keyword || '').replace(/^\s+|\s+$/gi, '');
+                $('#list').html(search(keyword));
+
+                return false;
+            });
+
+        })();
+    </script>
+</body>
+
+</html>
