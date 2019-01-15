@@ -1,6 +1,6 @@
 # Projects
 
-## [严选类电商一键搜索工具](/multi-esc-search/)
+## [严选类电商一键搜索工具](/multi-ecs-search/)
 
 ### 为什么做这个小工具
 
