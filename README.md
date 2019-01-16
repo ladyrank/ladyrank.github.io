@@ -1,6 +1,4 @@
-# Projects
-
-## 一、[严选类电商一键搜索工具](/multi-ecs-search/)
+# 一、[严选类电商一键搜索工具](/multi-ecs-search/)
 
 ### 为什么做这个小工具
 
@@ -10,6 +8,6 @@
 
 > 这个比较复杂，不一定能搞得定
 
-## 二、[Redirect localhost or 127.0.0.1 to your pc's true ip address](https://greasyfork.org/zh-CN/scripts/376204-redirect-localhost-or-127-0-0-1-to-your-pc-s-true-ip-address)
+# 二、[Redirect localhost or 127.0.0.1 to your pc's true ip address](https://greasyfork.org/zh-CN/scripts/376204-redirect-localhost-or-127-0-0-1-to-your-pc-s-true-ip-address)
 
 > 自动将浏览器url的localhost或127.0.0.1跳转到本机当前ip地址，方便web开发。
